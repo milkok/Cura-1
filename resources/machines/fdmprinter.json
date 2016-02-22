@@ -976,9 +976,14 @@
             "icon": "category_travel",
             "settings": {
                 "retraction_combing": {
-                    "label": "Enable Combing",
-                    "description": "Combing keeps the head within the interior of the print whenever possible when traveling from one part of the print to another and does not use retraction. If combing is disabled, the print head moves straight from the start point to the end point and it will always retract.",
-                    "type": "boolean",
+                    "label": "Combing",
+                    "description": "Combing keeps the head within the interior of the print whenever possible when traveling from one part of the print to another and does not use retraction. If combing is disabled, the print head moves straight from the start point to the end point and it will always retract. It is also possible to avoid combing over top/bottom skin areas by combing within the infill only.",
+                    "type": "enum",
+                    "options": {
+                        "off": "Off",
+                        "all": "All",
+                        "noskin": "No Skin"
+                    },
                     "default": true,
                     "visible": false
                 },
@@ -988,7 +993,7 @@
                     "type": "boolean",
                     "default": true,
                     "visible": false,
-                    "enabled": "retraction_combing",
+                    "enabled": "retraction_combing != off",
                     "global_only": "print_sequence != \"one_at_a_time\"",
                     "children": {
                         "travel_avoid_distance": {
@@ -1001,7 +1006,7 @@
                             "max_value_warning": "machine_nozzle_tip_outer_diameter * 5",
                             "visible": false,
                             "inherit": false,
-                            "enabled": "retraction_combing",
+                            "enabled": "retraction_combing != off and travel_avoid_other_parts",
                             "global_only": "print_sequence != \"one_at_a_time\""
                         }
                     }
