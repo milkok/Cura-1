@@ -34,6 +34,7 @@ from . import CuraActions
 from . import MultiMaterialDecorator
 from . import ZOffsetDecorator
 from . import CuraSplashScreen
+from . import CuraBindings
 
 from PyQt5.QtCore import pyqtSlot, QUrl, pyqtSignal, pyqtProperty, QEvent, Q_ENUMS
 from PyQt5.QtGui import QColor, QIcon
@@ -62,6 +63,7 @@ class CuraApplication(QtApplication):
     class ResourceTypes:
         QmlFiles = Resources.UserType + 1
         Firmware = Resources.UserType + 2
+        Materials = Resources.UserType + 3
     Q_ENUMS(ResourceTypes)
 
     def __init__(self):
@@ -104,6 +106,7 @@ class CuraApplication(QtApplication):
 
         Resources.addType(self.ResourceTypes.QmlFiles, "qml")
         Resources.addType(self.ResourceTypes.Firmware, "firmware")
+        Resources.addType(self.ResourceTypes.Materials, "materials")
 
         Preferences.getInstance().addPreference("cura/active_machine", "")
         Preferences.getInstance().addPreference("cura/active_mode", "simple")
@@ -194,6 +197,7 @@ class CuraApplication(QtApplication):
 
         self.setMainQml(Resources.getPath(self.ResourceTypes.QmlFiles, "Cura.qml"))
         self.initializeEngine()
+        CuraBindings.CuraBindings.register()
 
         if self._engine.rootObjects:
             self.closeSplash()
