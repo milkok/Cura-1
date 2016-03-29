@@ -1091,8 +1091,8 @@
                     "global_only": "True",
                     "children": {
                         "cool_fan_speed_min": {
-                            "label": "Normal Fan Speed",
-                            "description": "Normally the fan runs at the minimum fan speed. If a layer takes less than Shortest Layer Time Normal Fan Speed, the fan speed adjusts from Normal Fan Speed towards Maximum Fan Speed.",
+                            "label": "Regular Fan Speed",
+                            "description": "Normally the fan runs at the minimum fan speed. If a layer takes less than Shortest Layer Time Regular Fan Speed, the fan speed adjusts from Regular Fan Speed towards Maximum Fan Speed.",
                             "unit": "%",
                             "type": "float",
                             "min_value": "0",
@@ -1118,8 +1118,8 @@
                     }
                 },
                 "cool_fan_full_at_height": {
-                    "label": "Slow Fan Down Below Height",
-                    "description": "The height at which the fan is set to Normal Fan Speed. For the layers below this the fan speed is scaled linearly with the fan off on the first layer.",
+                    "label": "Regular Fan Speed at Height",
+                    "description": "The height at which the fan is spinning at Regular Fan Speed. The layers below this setting increase linearly from zero to Regular Fan Speed.",
                     "unit": "mm",
                     "type": "float",
                     "default": 0.5,
@@ -1130,8 +1130,8 @@
                     "global_only": "True",
                     "children": {
                         "cool_fan_full_layer": {
-                            "label": "Slow Fan Down Below Layer",
-                            "description": "The layer number at which the fan is set to Normal Fan Speed. For the layers below this the fan speed is scaled linearly with the fan off on the first layer.",
+                            "label": "Regular Fan Speed at Layer",
+                            "description": "The layer number at which the fan is spinning at Regular Fan Speed. The layers below this setting increase linearly from zero to Regular Fan Speed.",
                             "type": "int",
                             "default": 1,
                             "min_value": "0",
@@ -1154,8 +1154,8 @@
                     "global_only": "True"
                 },
                 "cool_min_layer_time_fan_speed_max": {
-                    "label": "Shortest Layer Time Normal Fan Speed",
-                    "description": "The minimum time spent in a layer which will cause the fan to be at normal speed. All layers taking shorter than this time will get increased fan speeds, up to Maximum Fan Speed for layers taking Minmal Layer Time. All layers taking longer than this time will have Normal Fan Speed.",
+                    "label": "Shortest Layer Time Regular Fan Speed",
+                    "description": "At this layer time the fan still spins at Regular Fan Speed. Shorter layer times cause the fan to spin (linearly) faster up to the Maximum Fan Speed at the Minimal Layer Time.",
                     "unit": "sec",
                     "type": "float",
                     "default": 10,
